@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F6F6F6;
+}
+
+.title {
+  text-align: center;
+  background-color: aquamarine;
+  margin: 0;
+}
+
+#head {
+  min-height: 4rem;
+  list-style: none;
+  background-color: aqua;
+  margin-top: 0;
+}
+
+#head .study {
+  width: 20%;
+  text-align: center;
+  height: 4rem;
+  float: left;
+}
+
+#head .study:hover {
+  background-color: #86f0f0;
+}
+
+#head .study:hover > .theme {
+  display: block;
+  background-color: aqua;
+  text-align: center;
+  font-size: 110%;
+  display: block;
+  margin: 1em 0 0 0;
+  color: white;
+  width: 150%;
+  padding: 10px;
+}
+
+#head .study span {
+  text-align: center;
+  font-size: 110%;
+  display: block;
+  margin: 1em 0 0 0;
+  color: white;
+}
+
+#head .theme {
+  display: none;
+}
+
+.content {
+  background-color: white;
+  margin: 0 auto;
+  width: 60%;
+  padding: 0 2rem;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.content .notes {
+  color: gray;
+  font-size: 0.8rem;
+}
+
+.content .main_theme {
+  font-size: 1.3rem;
+  background-color: rgba(77, 186, 196, 0.1);
+  padding: 1rem 2rem;
+  border-left: 2px aqua solid;
+}
+
+.content .subtitle, .content h4 {
+  border-bottom: 1px solid grey;
+}
+/*# sourceMappingURL=style.css.map */
