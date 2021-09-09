@@ -8,7 +8,7 @@ add_template.innerHTML=`<h1 class="title">ゆきまるの備忘録</h1>
 <nav>
   <ul id="head">
     <li class="study">
-      <a href="../home.html"><span>まえがき</span></a>
+      <a href="/home.html"><span>まえがき</span></a>
     </li>
   </ul>
 </nav>`;
