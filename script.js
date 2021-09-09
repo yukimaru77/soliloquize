@@ -47,13 +47,13 @@ document.getElementsByTagName("body")[0].prepend(add_template);
     <li class="study">
       <span>LPIC</span>
       <div class="theme">
-        メモリ
+        電源
       </div>
     </li>
     <li class="study">
-      <span>電磁気学</span>
+      <span>未定</span>
       <div class="theme">
-        ファラデー
+        未定
       </div>
     </li>
   </ul>
