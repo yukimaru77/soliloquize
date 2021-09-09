@@ -1,7 +1,24 @@
+@charset "UTF-8";
 body {
   margin: 0;
   padding: 0;
   background-color: #F6F6F6;
+}
+
+body p {
+  line-height: 1.8rem;
+}
+
+body img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+body .proguraming {
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
 
 .title {
@@ -15,6 +32,8 @@ body {
   list-style: none;
   background-color: aqua;
   margin-top: 0;
+  position: relative;
+  z-index: 100;
 }
 
 #head .study {
@@ -30,11 +49,10 @@ body {
 
 #head .study:hover > .theme {
   display: block;
-  background-color: aqua;
+  background-color: cyan;
   text-align: center;
   font-size: 110%;
   display: block;
-  margin: 1em 0 0 0;
   color: white;
   width: 150%;
   padding: 10px;
@@ -44,8 +62,9 @@ body {
   text-align: center;
   font-size: 110%;
   display: block;
-  margin: 1em 0 0 0;
+  margin: 1rem 0 0 0;
   color: white;
+  height: 3rem;
 }
 
 #head .theme {
@@ -75,5 +94,26 @@ body {
 
 .content .subtitle, .content h4 {
   border-bottom: 1px solid grey;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td {
+  border: solid 1px #333;
+  /* 線の種類 太さ 色 */
+  padding: 1px;
+}
+
+th {
+  border: solid 1px #333;
+  background-color: #d0ebfd;
+  padding: 1px;
+}
+
+a {
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */

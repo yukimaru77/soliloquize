@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">systemd</h2>
+    <h3 class="subtitle">SysVinitとsystemdの違い</h3>
+    <p>SysVinitとsystemdの大きな違いは並列処理が出来るかにある。SysVinitはinitプロセスを最初に実行し、initプロセスはinittabファイルに記載されているプロセスを順番に実行していくシェルスクリプトである。それに対しsystemdでは初めにsystemdプロセスが起動し、default.targetを解析し依存関係を処理してシステムの起動を行う。システムの起動処理はUnitという処理単位で管理されています。例えばサービスを起動するUnitやファイルシステムをマウントとするUnitなどがあります。SysVinitの初期化スクリプトにまとめて含まれていた個々の処理を抜き出して、個別の
+      「Unit」として定義ています。unitの概念は以下の画像がわかりやすいです。(<a href="https://www.slideshare.net/enakai/linux-27872553?from_action=save">こちら</a>がわかりやすいです。)</p>
+    <img src="/unit.png" alt="">
+    <h3 class="subtitle">unitの種類と定義ファイル</h3>
+    <table>
+      <tr>
+        <th>種類</th>
+        <th>説明</th>
+      </tr>
+      <tr>
+        <td>srevice</td>
+        <td>各種サービスの起動</td>
+      </tr>
+      <tr>
+        <td>target</td>
+        <td>複数のunitをグループ化して依存関係や順序関係を簡潔にまとめる</td>
+      </tr>
+      <tr>
+        <td>mount</td>
+        <td>有効化するとマウントされる。</td>
+      </tr>
+      <tr>
+        <td>swap</td>
+        <td>有効化するとSwap領域が有効になる。</td>
+      </tr>
+      <tr>
+        <td>device</td>
+        <td>udevがデバイスを認識すると有効化される。</td>
+      </tr>
+    </table>
+    <p>次の例はdefault.targetの中身である。(正体はランレベルに対応するターゲットへのシンボリックリンク)</p>
+    <div class="proguraming">
+      [root@localhost ~]# cat /etc/systemd/system/default.target<br><br>
+ 
+      [Unit]<br>
+      Description=Graphical Interface<br>
+      Documentation=man:systemd.special(7)<br>
+      Requires=multi-user.target<br>
+      Wants=display-manager.service<br>
+      Conflicts=rescue.service rescue.target<br>
+      After=multi-user.target rescue.service rescue.target display-manager.service<br>
+      AllowIsolate=yes<br>
+    </div>
+    <p>依存関係を設定するにはいくつかの方法があるがその一つに[Unit]タブの中にRequires= や Wants= を追記する方法がある。どちらも依存関係を示すパラメータであるが違いは「Requires」の場合は指定Unitが起動に失敗すると自身のUnitも起動に失敗（停止）するが、「Wants」の場合には指定Unitが起動に失敗しても、自身のUnitの起動を継続します。</p>
+    <p>Conflicts= は一緒に起動してはいけないunitを指定します。</p>
+    <p>After= A B C の場合A B Cを起動した後自身を起動させます。</p>
+  </div>
+</body>
+
+<script src="../script.js"></script>
+</html>

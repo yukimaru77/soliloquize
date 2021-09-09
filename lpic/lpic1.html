@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">SysVinitによる起動</h2>
+    <h3 class="subtitle">initプロセス</h3>
+    <p>SysVinitは初めにinitというプロセスが実行される。initプロセスは</p>
+    <ol>
+      <li>/etc/inittabファイルの読み込み //システムの初期化など</li>
+      <li>/etc/rc.sysinitフスクリプト呼び出し //ネットワークの設定など。</li>
+      <li>/etc/rc.d/rc 引数 の形でスクリプト実行 (Nはinittab内のデフォルトランレベルの数字になります)</li>
+      <li>rcスクリプトが/etc/rcN.d ディレクトリ以下のスクリプト実行 (Nはinittab内のデフォルトランレベルの数字になります)</li>
+    </ol>
+    <p>なお、2及び3番の処理は以下の画像のようにinittabに記載されています(画像は<a href="https://tech.pjin.jp/blog/2020/11/11/linux-system-boot-2">こちら</a>からお借りしました。正直このサイトがわかりやすすぎてこれをを見れば済む話ですが……。まあ備忘録なので、、)</p>
+    <img src="../image003.png" alt="" srcset="">
+    <p>①がデフォルのランレベルの指定。</p>
+    <p>②が/etc/rc.sysinitフスクリプト呼び出し(ランレベルにかかわらず必ず行われます。</p>
+    <p>③が/etc/rc.d/rc スクリプト実行。今回なら引数は5なので/etc/rc.d/rc 5が実行されその結果/rc5.dディレクトリ以下のスクリプトが実行されます。</p>
+    <p>なお/etc/rcN.d以下のファイルはすべて/etc/init.dディレクト以下にある起動ファイルへのシンボリックリンクです。</p>
+    <p>なので例えばコマンドプロンプトで</p>
+    <p class="proguraming">/etc/init.d/httpd start</p>
+    <p>のように直接スクリプトを起動することもできます。</p>
+  </div>
+</body>
+<script src="../script.js"></script>
+</html>
