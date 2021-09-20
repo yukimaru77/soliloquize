@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">パーティション</h2>
+    <h3 class="subtitle">パーティションとは</h3>
+    <p>ハードディスクやSSDを分割した区画のことです。以下の2単元は(<a href="http://www.miloweb.net/partition.html">こちら</a>から引用させてもらいました。)</p>
+    <h3 class="subtitle">windwsでのパーティションの意味合い</h3>
+    <p>Windowsでの「パーティション」は、物理的なハードディスクドライブ（以下、HDD）を複数の論理的HDDに分ける事です。<br>
+      つまり、1台のHDDを見かけ上複数台のHDDにみせかける事です。<br>
+      そして、分割された個々のパーティションはひとつの「ドライブ」として扱われます。<br>
+      ひとつの物理的なHDDに２つのパーティションを区切ると、Windows上では見かけ上２つのHDDが設置されている事になり（「C:」ドライブや「D:」ドライブなど）、<br>
+      それぞれが独立したフォルダ構造を持つ事になります。</p>
+      <h3 class="subtitle">Linuxでのパーティション</h3>
+      <p>Linuxでは「ドライブ」と言う概念はありません。<br>
+        全て「/」（ルート）から始まるディレクトリ構造で表されます。<br>
+        これは、物理的なHDDが複数台存在していても同様で、ひとつのディレクトリ構造になります。<br>
+        また、「/」と「/usr」をパーティションで分割した場合には、「/usr」の容量が一杯になると<br>
+        例え「/」に容量の空きがあっても「/usr」以下にはファイルの追加ができませんので、注意が必要です。</p>
+      <h3 class="subtitle">最低限必要なパーティション</h3>
+      <ol>
+        <li>ルートファイルシステムに割り当てるルートパーティション</li>
+        <li>スワップ領域</li>
+      </ol>
+      <h3 class="subtitle">ファイルシステムとは</h3>
+      <p>ハードディスク等の記憶装置にあるデータをファイル名・更新日付などの属性データや、ファイルデータ自体を管理するための仕組み。</p>
+      <h3 class="subtitle">ファイルシステムとパーティション</h3>
+      <p>パーティションを作成しただけでは/dev/sda1などのデバイスファイルが出来ただけで使用できない。そこで以下のコマンドを使ってファイルシステムをパーティションに対応するデバイスファイルを使って作成する。</p>
+      <div class="format"> mkfs [オプション] デバイス名（パーティション）</div>
+      <p>なお実際にはmkfsはコマンドを呼び出すコマンドとなっています。-tオプション(type)によって呼び出すコマンドを変えています。</p>
+      <div class="proguraming">
+        ls -l /sbin/mkfs*<br>
+      lrwxrwxrwx 1 root root      6  7月  4 21:53 /sbin/mkfs.ext2 -> mke2fs<br>
+      lrwxrwxrwx 1 root root      6  7月  4 21:53 /sbin/mkfs.ext3 -> mke2fs<br>
+      lrwxrwxrwx 1 root root      6  7月  4 21:53 /sbin/mkfs.ext4 -> mke2fs<br>
+      </div>
+      <h3 class="subtitle">マウントとは</h3>
+      <p>Linuxはすべてのファイルがルートディレクトリ以下に配置される。マウントとは作成したファイルシステムがあるパーティションをルートディレクトリ以下のポイントに登録することを言います。これらの工程を経てやっと実際に使えるようになります。以下のコマンドを使ってマウントを行います。</p>
+      <div class="format"> mount [オプション] デバイスファイル マウントポイント</div>
+      <p>起動時に自動マウントさせるには/etc/fstabに追記します。</p>
+  </div>
+</body>
+
+<script src="../script.js"></script>
+</html>

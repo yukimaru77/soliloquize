@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">パッケージ</h2>
+    <h3 class="subtitle">パッケージとは</h3>
+    <p>パッケージとは実行プログラムや設定ファイル、ドキュメントやマニュアルなどの関連するファイルを一つにまとめたものを言います</p>
+    <h3 class="subtitle">パッケージの種類</h3>
+    <p>パッケージにも色々な種類があってDebian GNU/Linuxなどで採用されているdeb形式、Red Hat Enterprise Linuxなどで採用されているrpm形式(Red Hat Package Manager)などがある。</p>
+    <h3 class="subtitle">パッケージの扱い方</h3>
+    <p>パッケージは基本的に違う形式同士では互換性がありません。なのでそれぞれのパッケージは専用のコマンドを使って扱います。deb形式はdpkgコマンド(Debian package manager)及びdpkgコマンドのフロントエンドとして機能するAPTコマンド(apt-getコマンド及びapt-cacheコマンド)、rpm形式ではrpmコマンド及びyumコマンド(Yellow dog Updater Modified)があります</p>
+    <h3 class="subtitle">dpkgコマンド</h3>
+    <p>dpkgコマンドはあくまでdeb形式のファイルを操作するコマンドなのでdebファイルは前もってネットなどからダウンロードする必要があります。</p>
+    <p>なおdebファイルの名前には規則がありunzip_6.0-16+deb8u2_amd64.debなら</p>
+    <div class="oneque_oneans">
+      <table>
+        <tr>
+          <td><p>unzip</p></td>
+          <td><p>パッケージ名</p></td>
+        </tr>
+        <tr>
+          <td><p>6.0</p></td>
+          <td><p>バージョン番号</p></td>
+        </tr>
+        <tr>
+          <td><p>16+deb8u2</p></td>
+          <td><p>リビジョン番号</p></td>
+        </tr>
+        <tr>
+          <td><p>amd64</p></td>
+          <td><p>アーキテクチャ</p></td>
+        </tr>
+      </table>
+    </div>
+    <p>dpkgコマンドの書式は以下になります</p>
+    <div class="format">dpkg [オプション] アクション</div>
+    <div class="kind">
+      <table>
+        <tr>
+          <th class="no_br">オプション/アクション</th>
+          <th class="no_br">説明</th>
+        </tr>
+        <tr>
+          <td>-i(--install) パッケージファイル名</td>
+          <td>パッケージをインストールする</td>
+        </tr>
+        <tr>
+          <td>-r(--remove) パッケージ名</td>
+          <td>設定ファイル以外をアンインストールする</td>
+        </tr>
+        <tr>
+          <td>-p(--purge) パッケージ名</td>
+          <td>設定ファイルも含めてすべてアンインストールする</td>
+        </tr>
+        <tr>
+          <td>-l(--list) パッケージ名検索パターン</td>
+          <td>インストール済みのパッケージの中から検索する</td>
+        </tr>
+        <tr>
+          <td>-S(--search) ファイル名検索パターン</td>
+          <td>指定したファイルがどのパッケージからインストールされたかを表示する</td>
+        </tr>
+        <tr>
+          <td>-L(--listfiles) パッケージ名</td>
+          <td>指定したパッケージからインストールされたファイル一覧を表示する</td>
+        </tr>
+        <tr>
+          <td>-s(--status) パッケージ名</td>
+          <td>パッケージの情報を表示する</td>
+        </tr>
+        <tr>
+          <td>-E</td>
+          <td>同じバージョンのパッケージがあるならインストールしない</td>
+        </tr>
+        <tr>
+          <td>-G</td>
+          <td>新バージョンがインストールされているならインストールしない</td>
+        </tr>
+      </table>
+    </div>
+    <p>このコマンドのめんどくさい点はパッケージに依存関係があるとそれをインストールするまでエラーになる、(バージョンが上がるたびに)パッケージファイルは自分で探してダウンロードしてこなければいけない、という点です。</p>
+    <p>そこでAPT(Advaced Packaging Tool)というパッケージ管理ツールに含まれるコマンドを使用します。</p>
+    <h3 class="subtitle">apt-getコマンド</h3>
+    <div class="format">apt-get [オプション] サブコマンド</div>
+    <div class="kind">
+      <table>
+        <tr>
+          <th class="no_br">オプション/アクション</th>
+          <th class="no_br">説明</th>
+        </tr>
+        <tr>
+          <td>update</td>
+          <td>パッケージデータベースを/etc/apt/sources.listに記載されたURLから更新する</td>
+        </tr>
+        <tr>
+          <td>upgrade</td>
+          <td>システムの全パッケージのうち、他のパッケージを削除しないものをアップグレードする</td>
+        </tr>
+        <tr>
+          <td>dist-upgrade</td>
+          <td>システムを最新にアップグレードする</td>
+        </tr>
+        <tr>
+          <td>install パッケージ名</td>
+          <td>パッケージをインストール、アップグレードする</td>
+        </tr>
+        <tr>
+          <td>remove</td>
+          <td>パッケージをアンインストールする</td>
+        </tr>
+        <tr>
+          <td>clean</td>
+          <td>過去に取得して保持したパッケージファイルを削除する。</td>
+        </tr>
+        <tr>
+          <td>-d</td>
+          <td>ファイルのダウンロードのみを行う</td>
+        </tr>
+      
+      </table>
+    </div>
+
+  </div>
+</body>
+
+<script src="../script.js"></script>
+</html>

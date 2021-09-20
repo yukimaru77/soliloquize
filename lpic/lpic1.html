@@ -10,16 +10,40 @@
 <body>
   <div class="content">
     <h2 class="main_theme">SysVinitによる起動</h2>
-    <h3 class="subtitle">initプロセス</h3>
+    <h3 class="subtitle">SysVinitの流れ</h3>
     <p>SysVinitは初めにinitというプロセスが実行される。initプロセスは</p>
     <ol>
       <li>/etc/inittabファイルの読み込み //システムの初期化など</li>
       <li>/etc/rc.sysinitフスクリプト呼び出し //ネットワークの設定など。</li>
-      <li>/etc/rc.d/rc 引数 の形でスクリプト実行 (Nはinittab内のデフォルトランレベルの数字になります)</li>
+      <li>/etc/rc.d/rc [引数] の形でスクリプト実行 ([引数]はinittab内のデフォルトランレベルの数字になります)</li>
       <li>rcスクリプトが/etc/rcN.d ディレクトリ以下のスクリプト実行 (Nはinittab内のデフォルトランレベルの数字になります)</li>
     </ol>
-    <p>なお、2及び3番の処理は以下の画像のようにinittabに記載されています(画像は<a href="https://tech.pjin.jp/blog/2020/11/11/linux-system-boot-2">こちら</a>からお借りしました。正直このサイトがわかりやすすぎてこれをを見れば済む話ですが……。まあ備忘録なので、、)</p>
+    <h3 class="subtitle">inittabの構造</h3>
+    <p>2及び3番の処理は以下の画像のようにinittabに記載されています(画像は<a href="https://tech.pjin.jp/blog/2020/11/11/linux-system-boot-2">こちら</a>からお借りしました。正直このサイトがわかりやすすぎてこれをを見れば済む話ですが……。まあ備忘録なので、、)</p>
     <img src="../image003.png" alt="" srcset="">
+    <p>書式はid:runlevel:action:processとなっている</p>
+    <div class="oneque_oneans">
+      <h5>書式の概要説明</h5>
+      <table>
+        <tr>
+          <td><p><strong>id</strong></p></td>
+          <td><p>設定の識別子を指定します。</p></td>
+        </tr>
+        <tr>
+          <td><p><strong>runlevel</strong></p></td>
+          <td><p>どのランレベルの時実行されるかを指定します。</p></td>
+        </tr>
+        <tr>
+          <td><p><strong>action</strong></p></td>
+          <td><p>何をしたときに(どんな時に)実行されるのかを指定します</p></td>
+        </tr>
+        <tr>
+          <td><p><strong>process</strong></p></td>
+          <td><p>どのプロセスを動作させるのかを指定します。</p></td>
+        </tr>
+
+      </table>
+    </div>
     <p>①がデフォルのランレベルの指定。</p>
     <p>②が/etc/rc.sysinitフスクリプト呼び出し(ランレベルにかかわらず必ず行われます。</p>
     <p>③が/etc/rc.d/rc スクリプト実行。今回なら引数は5なので/etc/rc.d/rc 5が実行されその結果/rc5.dディレクトリ以下のスクリプトが実行されます。</p>

@@ -96,18 +96,23 @@ body .proguraming {
   border-bottom: 1px solid grey;
 }
 
-table {
-  border-collapse: collapse;
-  width: 50%;
+.kind .no_br {
+  white-space: nowrap;
 }
 
-td {
+.kind table {
+  border-collapse: collapse;
+  width: 60%;
+}
+
+.kind td {
   border: solid 1px #333;
   /* 線の種類 太さ 色 */
   padding: 1px;
+  min-width: 20%;
 }
 
-th {
+.kind th {
   border: solid 1px #333;
   background-color: #d0ebfd;
   padding: 1px;
@@ -115,5 +120,33 @@ th {
 
 a {
   text-decoration: none;
+}
+
+.oneque_oneans h5 {
+  font-size: 110%;
+}
+
+.oneque_oneans p {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0.25rem;
+}
+
+.format {
+  padding: 1.5rem 0.8rem 0.8rem 0.8rem;
+  margin: 1rem 0;
+  background-color: gray;
+  color: white;
+  position: relative;
+}
+
+.format::before {
+  content: "書式";
+  font-size: large;
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 0;
+  font-size: 15px;
 }
 /*# sourceMappingURL=style.css.map */

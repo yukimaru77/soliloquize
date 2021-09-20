@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">ライブラリ</h2>
+    <h3 class="subtitle">ライブラリとは</h3>
+    <p>ライブラリとはよく使われる機能をまとめて、他のプログラムから利用できるようにした部品のようなものです。プログラムのコンパイル時に直接実行ファイルに埋め込まれる静的ライブラリとプログラム実行時にロードされる複数のプログラムで共有される共有ライブラリがあります。</p>
+    <h3 class="subtitle">スタティックリンクとダイナミックリンク</h3>
+    <p>ライブラリの機能を使うことをリンクと言います。スタティックリンクは静的ライブラリを使います。つまりコンパイルするときにコンパイラが実行ファイルにライブラリを直接埋め込みます。ダイナミックリンクは共有ライブラリを使います。つまり実行時にライブラリの機能を呼び出します。</p>
+    <h3 class="subtitle">共有ライブラリ</h3>
+    <p>共有ライブラリはlib~.so~(例：libreadline.so.5)のように名前が付けられます。soはshared objectの略。/libまたは/use/libディレクトリの下に配置されます。</p>
+    <h3 class="subtitle">共有ライブラリのキャッシュファイル</h3>
+    <p>リンカやローダーは/libや/use/libディレクトリを検索しますが他のディレクトリも検索したい場合は次のように/etc/ld/so.confファイルに記述します。</p>
+    <pre class="proguraming">
+/usr/lib64/iscsi
+/usr/lib64/mysql
+    </pre>
+    <p>しかしディレクトリ内検索をプログラム実行時に毎回していると効率が悪いため実際には/etc/ld/so.confファイルは参照していません。/etc/ld/so.confファイルをもとに/etc/ld.so.cacheというキャッシュファイルが構築されます。そこにはライブラリの名前と場所の対応リストが書いておりリンカはこれを参照しています。 </p>
+    <p>/etc/ld/so.confファイルを編集しただけでは/etc/ld.so.cacheは再構築されないため <strong>ldconfig コマンド</strong>を実行してキャッシュファイルを更新する必要があります。</p>
+    <h3 class="subtitle">共有ライブラリの確認</h3>
+    <p>実行ファイルが必要とする共有ライブラリの確認は</p>
+    <div class="format"> ldd 実行ファイル</div>
+    <p>で確認できます。</p>
+    <pre class="proguraming">ldd /bin/cat
+      linux-vdso.so.1 (0x00007ffe19c40000)
+      libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fe7417ac000)
+      /lib64/ld-linux-x86-64.so.2 (0x00007fe7419bc000)
+    </pre>
+
+  </div>
+</body>
+
+<script src="../script.js"></script>
+</html>
