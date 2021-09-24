@@ -94,11 +94,18 @@ body {
 }
 .kind {
     .no_br  { white-space: nowrap;}
+    tr td:nth-of-type(1)
+    {
+        white-space:nowrap;
+
+    }
     
     table {
         border-collapse: collapse;
         width: 60%;
     }
+
+
     td {
         border: solid 1px #333; /* 線の種類 太さ 色 */
         padding: 1px;

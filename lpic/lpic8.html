@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">コマンド</h2>
+    <h3 class="subtitle">sshコマンド</h3>
+    <p>ssh接続を行う。ユーザー名はオプションで指定することもできる。</p>
+    <div class="format">ssh [オプション] [ユーザー名@]接続先IPアドレスまたはDNSアドレス</div>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>オプション</th>
+          <th>説明</th>
+        </tr>
+        <tr>
+          <td>-l ユーザー名</td>
+          <td>指定したユーザー名でアクセスする。(ユーザー名@でも可)</td>
+        </tr>
+        <tr>
+          <td>-p ポート番号</td>
+          <td>ポート番号を指定する</td>
+        </tr>
+        <tr>
+          <td>-i ファイル名</td>
+          <td>秘密鍵を指定する</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3 class="subtitle">sshからログアウト</h3>
+    <p>exitコマンド、logoutコマンド、Ctrl+Dでシェルが終了する。</p>
+
+    <h3 class="subtitle">Dockerコマンド</h3>
+    <p>Dockerに関するコマンド</p>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>書式</th>
+          <th>説明</th>
+        </tr>
+        <tr>
+          <td>docker create </td>
+          <td>Dockerイメージからコンテナを作成する</td>
+        </tr>
+        <tr>
+          <td>docker start</td>
+          <td>コンテナを起動する</td>
+        </tr>
+        <tr>
+          <td>docker run</td>
+          <td>createとstartを同時に行う</td>
+        </tr>
+        <tr>
+          <td>docker stop</td>
+          <td>コンテナを停止させる</td>
+        </tr>
+        <tr>
+          <td>docker ps</td>
+          <td>コンテナの一覧表示</td>
+        </tr>
+        <tr>
+          <td>docker images</td>
+          <td>Dockerイメージの一覧を表示する</td>
+        </tr>
+        <tr>
+          <td>docker exec</td>
+          <td>指定したコンテナにコマンドを実行、シェルを開くときなど</td>
+        </tr>
+        <tr>
+          <td>docker pull</td>
+          <td>docker hubからイメージをダウンロード。デフォルトだとlatest(最新版)のタグを使って最新版を取得</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3 class="subtitle">systemctlコマンド</h3>
+    <p>systemdに関するコマンド</p>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>書式</th>
+          <th>説明</th>
+        </tr>
+        <tr>
+          <td>ststemctl start</td>
+          <td>サービスを起動する</td>
+        </tr>
+        <tr>
+          <td>ststemctl stop</td>
+          <td>サービスを停止する</td>
+        </tr>
+        <tr>
+          <td>ststemctl enable</td>
+          <td>サービスの自動起動を有効にする</td>
+        </tr>
+        <tr>
+          <td>ststemctl disable</td>
+          <td>サービスの自動起動を無効にする</td>
+        </tr>
+        <tr>
+          <td>ststemctl is-active</td>
+          <td>サービスが起動しているか確認する</td>
+        </tr>
+        <tr>
+          <td>ststemctl status</td>
+          <td>サービスの状態を確認する</td>
+        </tr>
+        <tr>
+          <td>ststemctl restart</td>
+          <td>サービスを再起動する</td>
+        </tr>
+        <tr>
+          <td>ststemctl halt</td>
+          <td>システムを停止しhalt状態にする</td>
+        </tr>
+        <tr>
+          <td>ststemctl reboot</td>
+          <td>システムを再起動する</td>
+        </tr>
+        <tr>
+          <td>ststemctl poweoff</td>
+          <td>システムを停止し電源を切断する</td>
+        </tr>
+
+      </table>
+    </div>
+
+    <h3 class="subtitle">shutdownコマンド</h3>
+    <p>システムの停止や再起動を行う</p>
+    <div class="format">shutdown [オプション] 時間 [コメント]</div>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>オプション</th>
+          <th>説明</th>
+        </tr>
+        <tr>
+          <td>-h</td>
+          <td>省略した時のデフォルトのオプション。システムを停止する。</td>
+        </tr>
+        <tr>
+          <td>-r</td>
+          <td>再起動する。</td>
+        </tr>
+        <tr>
+          <td>-k</td>
+          <td>シャットダウンは行わずにコメントのみを送る。</td>
+        </tr>
+        <tr>
+          <td>-c</td>
+          <td>予定されたシャットダウンを取り消す。</td>
+        </tr>
+        <tr>
+          <td>時間</td>
+          <td>+10で10分後(+は無くても可)、HH:MMでHH時MM分に実行、nowは今すぐに実行。</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3 class="subtitle">psコマンド</h3>
+    <p>プロセスの表示を行う</p>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>オプション</th>
+          <th>説明</th>
+        </tr>
+        <tr>
+          <td>a</td>
+          <td>他のユーザーのプロセスも表示</td>
+        </tr>
+        <tr>
+          <td>x</td>
+          <td>制御端末のないデーモンなども表示</td>
+        </tr>
+        <tr>
+          <td>u</td>
+          <td>ユーザー名も表示</td>
+        </tr>
+        <tr>
+          <td>f</td>
+          <td>プロセスの親子関係をツリー状で表示</td>
+        </tr>
+        <tr>
+          <td>-e</td>
+          <td>すべてのプロセスを表示。axオプションにあたる</td>
+        </tr>
+        <tr>
+          <td>-f</td>
+          <td>完全なフォーマットで表示</td>
+        </tr>
+        <tr>
+          <td>-p PID または p PID</td>
+          <td>指定したプロセスのみを表示</td>
+        </tr>
+        <tr>
+          <td>-l または l</td>
+          <td>nice値も表示</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3 class="subtitle">jobsコマンド</h3>
+    <p>バックグラウンドと一時停止中のジョブの表示を行う</p>
+
+    <h3 class="subtitle">killコマンド</h3>
+    <p>プロセスにシグナルを送る。シグナルを送るとたいていのプロセスは終了するがそれはプロセスをどう実装したのかによる。このプロセスはHUPシグナルを受け取ったら終了すると実装されているから終了するのである。</p>
+    <div class="format">kill [-シグナル名または-シグナル番号] プロセスID</div>
+    <p>または</p>
+    <div class="format">kill -s [シグナル名またはシグナル番号] プロセスID</div>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>シグナル</th>
+          <th>シグナルの内容</th>
+        </tr>
+        <tr>
+          <td>HUP(1)</td>
+          <td>端末が切断されたときのシグナル(プロセスを実行したユーザーがログアウトしたのと同じような意味合い)</td>
+        </tr>
+        <tr>
+          <td>INT(2)</td>
+          <td>フォアグラウンドジョブがキーボードによる割り込み命令を受けたときのシグナル(Ctrl+C)</td>
+        </tr>
+        <tr>
+          <td>KILL(9)</td>
+          <td>プロセスの強制停止のシグナル。クリーンアップせずに終了</td>
+        </tr>
+        <tr>
+          <td>TERM(15)</td>
+          <td>クリーンアップして終了。指定しない場合はこれが送られる</td>
+        </tr>
+        <tr>
+          <td>CONT(18)</td>
+          <td>一時停止したプロセスを再開させるシグナル</td>
+        </tr>
+        <tr>
+          <td>STOP(19)</td>
+          <td>プロセスを一時停止させるシグナル</td>
+        </tr>
+        <tr>
+          <td>TSTP(20)</td>
+          <td>キーボードによる一時停止のシグナル(Ctrl+Z)</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3 class="subtitle">killall/pkillコマンド</h3>
+    <p>特定のコマンドを実行しているすべてのプロセスにシグナルを送る。</p>
+    <div class="format">killall(pkill) [-シグナル名または-シグナル番号] コマンド名</div>
+    <p>または</p>
+    <div class="format">killall(pkill) -s(--signal) [シグナル名またはシグナル番号] コマンド名</div>
+
+    <h3 class="subtitle">nohupコマンド</h3>
+    <p>指定したジョブをシェルからログアウトした後もを実行させる(=HUPシグナルを無視させる)</p>
+    <div class="format">nohuo コマンド(ジョブ)</div>
+
+    <h3 class="subtitle">topコマンド</h3>
+    <p>メモリやスワップの稼働状況やプロセスの一覧を表示する。</p>
+
+    <h3 class="subtitle">freeコマンド</h3>
+    <p>メモリやスワップの稼働状況や空き状況を表示する。</p>
+
+    <h3 class="subtitle">uptimeコマンド</h3>
+    <p>平均負荷を表示する。実行待ちとなっているプロセスの平均数でこれが例えば4コアのCPUを2津搭載したサーバーなら8を超えているかどうかという風に確認する。</p>
+
+    <h3 class="subtitle">unameコマンド</h3>
+    <p>ホスト名や</p>
+    
+    
+
+
+
+
+
+  </div>
+</body>
+
+<script src="../script.js"></script>
+</html>

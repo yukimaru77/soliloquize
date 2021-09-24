@@ -100,6 +100,10 @@ body .proguraming {
   white-space: nowrap;
 }
 
+.kind tr td:nth-of-type(1) {
+  white-space: nowrap;
+}
+
 .kind table {
   border-collapse: collapse;
   width: 60%;
