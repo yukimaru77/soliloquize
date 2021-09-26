@@ -1,7 +1,7 @@
 //目次と内容
 field_of_study = ["Linux","未定"];
 field_of_study_en = ["lpic","elect"]; //url用
-main_theme = [["Linuxの起動","SysVinitの仕組み","systemdの仕組み","パーティション","ライブラリ","パッケージ","シェル","アクセス権","コマンド"],["未定"]];
+main_theme = [["Linuxの起動","SysVinitの仕組み","systemdの仕組み","パーティション","ライブラリ","パッケージ","シェル","アクセス権","コマンド","procディレクトリと関連知識"],["未定"]];
 
 add_template=document.createElement("div");
 add_template.innerHTML=`<h1 class="title">ゆきまるの備忘録</h1>

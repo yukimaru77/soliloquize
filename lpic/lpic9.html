@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="content">
+    <h2 class="main_theme">/procディレクトリと周辺知識</h2>
+    <p>/procディレクトリ以下のファイルはデバイスファイルなどの特殊ファイルと呼ばれるものよりも特殊で実際には存在しないファイルである。しかも容量は0でありユーザーが必要としたときに動的生成を行っている。大半の仮想ファイルのタイムスタンプは常に現在時刻になっているが、これは絶えず更新され続けているということを表わしている。なお/procディレクトリ自体は、マシンの起動時に毎回作成される。</p>
+    <h3 class="subtitle">/procディレクトリ以下の主なファイル</h3>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>ファイル名</th>
+          <th>説明</th>
+        </tr>
+        <tr>
+          <td>/proc/cpuinfo</td>
+          <td>CPU情報。lscpuコマンドのもと</td>
+        </tr>
+        <tr>
+          <td>/proc/interrupts</td>
+          <td>IRQ情報(Interrupt Request)</td>
+        </tr>
+        <tr>
+          <td>/proc/ioports</td>
+          <td>Ｉ/Ｏアドレス情報</td>
+        </tr>
+        <tr>
+          <td>/proc/meminfo</td>
+          <td>メモリ情報</td>
+        </tr>
+        <tr>
+          <td>/proc/bus/usb/~</td>
+          <td>USBデバイス情報</td>
+        </tr>
+        <tr>
+          <td>/proc//bus/pci/~</td>
+          <td>PCIデバイス情報</td>
+        </tr>
+        <tr>
+          <td>/proc/modules</td>
+          <td>どのようなモジュールが取り込まれているのかを確認する。lsmodコマンドのもと</td>
+        </tr>
+      </table>
+    </div>
+    <h2 class="main_theme">IRQとは</h2>
+    <p>IRQ(Interrupt ReQuest)とは、マウスやキーボードなどの周辺機器(デバイス)からCPUへの割り込み要求のことです。IRQには0から1、2、3のように順に番号がつき、そのうちのいくつかは特定のデバイスに割り当てられています。例えば0はシステムタイマー、1はキーボードに割り当てられています。IRQ番号が重複しているとハードウェアが正常に動作しないことがあります。<a href="http://www.linux-beginner.com/lpic_level1_2.html">参考</a></p>
+    <h2 class="main_theme">USBとは</h2>
+    <p>Universal Serial Busの略である。キーボードだけ，マウスだけといった，装置毎のバスではなく，何にでも使える (Universal) バスが望まれたために生まれたものである。バスとは命令やデータが通る道(電気が流れる線)のことである。USBには以下の特徴がある。</p>
+    <ul>
+      <li>最大127台までUSBデバイスを接続可能</li>
+      <li>さまざまなUSBデバイスを同一コネクタで接続可能</li>
+      <li>電源を入れたまま接続、取り外し可能</li>
+      <li>USBポートからUSBデバイスに電源を供給可能</li>
+    </ul>
+    <p>USBデバイスはいくつかのデバイスクラスに分けれれる。ハードウェアを利用するにはデバイスドライバが必須だがそれぞれのデバイスクラスにはクラスドライバという汎用ドライバが用意されています。</p>
+    <div class="kind">
+      <table>
+        <tr>
+          <th>デバイスクラス</th>
+          <th>USBデバイス</th>
+        </tr>
+        <tr>
+          <td>HID(Human Interface Device)</td>
+          <td>キーボード、マウス</td>
+        </tr>
+        <tr>
+          <td>Mass Storage Class</td>
+          <td>ハードディスク、USBメモリー</td>
+        </tr>
+        <tr>
+          <td>ACM Communication Device Class</td>
+          <td>モデム、TAなど</td>
+        </tr>
+        <tr>
+          <td>Audio Class</td>
+          <td>マイク、スピーカー</td>
+        </tr>  
+        <tr>
+          <td>ワイヤレスコントローラー</td>
+          <td>Wi-Fiアダプタ、Bluetoothアダプタ</td>
+        </tr>    
+        <tr>
+          <td>プリンタ</td>
+          <td>プリンタ</td>
+        </tr>        
+      </table>
+    </div>
+    <h2 class="main_theme">I/Oポートとは</h2>
+    <p>cpuが周辺機器とデータをやり取り委する際の窓口がI/Oポートです。CPUは周辺機器と直接やり取りするわけではなくI/Oポートを通してやり取りします。各I/Oポートにはそれぞれ固有のI/Oポートアドレスが割り当てられ、CPUは制御したいポートのアドレスを指定してデータの読み書きを行うことで命令の送信や受信データの受け取りなどを行なうことができる。<a href="http://www.linux-beginner.com/lpic_level1_4.html">参考</a></p>
+    <h2 class="main_theme">PCIとは</h2>
+    <p>Peripheral Component Interconnect(周囲・部品・連結)の略で規格の一つです。PCIスロットにPCIカードを差し込むことで拡張できます。PCIデバイスとはPCIバスに接続されたデバイスのことです。</p>
+    <img src="/lspci.png" alt="">
+    <ul>
+      <li>(1)PCI識別番号　00:03.3</li>
+      <li>(2)PCIデバイスの種類　Serial controller</li>
+      <li>(3)ベンダー名（ベンダーID）　Intel Corporation</li>
+      <li>(4)デバイス名　Mobile 4 Series Chipset AMT SOL Redirection (rev 07)</li>
+      <li>(5)バスの速度(詳細表示のみ)　66MHz</li>
+      <li>(6)IRQ番号(詳細表示のみ)　17</li>
+      <li>(7)I/Oポートアドレス(詳細表示のみ)　1830</li>
+    </ul>
+    
+    <p><a href="https://mondai.ping-t.com/">参考</a></p>
+    <h2 class="main_theme">カーネルモジュールとは</h2>
+    <p>カーネルモジュールとは、Linuxカーネルの機能の一部を、カーネル本体とは別にロード、アンロードできるように分離したサイズの小さいバイナリファイルです。デバイスドライバなども含まれます。モジュールとしてカーネルから切り離すことでカーネル本体のサイズを小さくし、必要な機能だけをロードしたり、不要な機能はアンロードするというように使用できます。必要なデバイスドライバは自動的にロードされますが、手動でロードする場合はmodprobeコマンドで実行します。</p>
+    
+  </div>
+
+</body>
+
+<script src="../script.js"></script>
+</html>
