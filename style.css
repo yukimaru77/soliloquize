@@ -96,27 +96,27 @@ body .proguraming {
   border-bottom: 1px solid grey;
 }
 
-.kind .no_br {
+.kind .no_br, .option .no_br {
   white-space: nowrap;
 }
 
-.kind tr td:nth-of-type(1) {
+.kind tr td:nth-of-type(1), .option tr td:nth-of-type(1) {
   white-space: nowrap;
 }
 
-.kind table {
+.kind table, .option table {
   border-collapse: collapse;
   width: 60%;
 }
 
-.kind td {
+.kind td, .option td {
   border: solid 1px #333;
   /* 線の種類 太さ 色 */
   padding: 1px;
   min-width: 20%;
 }
 
-.kind th {
+.kind th, .option th {
   border: solid 1px #333;
   background-color: #d0ebfd;
   padding: 1px;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="jp">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
   <div class="content">
     <h2 class="main_theme">コマンド</h2>
@@ -272,9 +274,396 @@
     <p>平均負荷を表示する。実行待ちとなっているプロセスの平均数でこれが例えば4コアのCPUを2津搭載したサーバーなら8を超えているかどうかという風に確認する。</p>
 
     <h3 class="subtitle">unameコマンド</h3>
-    <p>ホスト名や</p>
-    
-    
+    <p>ホスト名などマシンの情報を表示</p>
+
+    <h2 class="main_theme">テキスト処理フィルタ</h2>
+    <div>
+      <h3 class="subtitle">catコマンド</h3>
+      <p>ファイルの内容を標準出力に出力。複数の引数を指定可能。引数無しの場合は標準入力から入力を受け付ける。</p>
+      <div class="format">cat [ファイル名1] [ファイル名2] …</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-n</td>
+            <td>各行の左端に行番号を付与</td>
+          </tr>
+        </table>
+      </div>
+      <h3 class="subtitle">nlコマンド</h3>
+      <p>指定した方法でヘッダ、本文、フッタに分けてそれぞれ行番号を付与。引数無しで標準入力からの受付になる。</p>
+      <div class="format">nl [オプション] [ファイル名]</div>
+      <p>区切りとなる行は2文字で指定します。デフォルトは「\:」で、「\:\:\:」という行をヘッダの開始、「\:\:」という行を本文の開始、「\:」をフッタの開始行と見なします。区切り文字は「-d」オプションで変更できます。
+      </p>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-b 形式</td>
+            <td>指定した形式で本文に行番号を付与</td>
+          </tr>
+          <tr>
+            <td>-h 形式</td>
+            <td>指定した形式でヘッダに行番号を付与</td>
+          </tr>
+          <tr>
+            <td>-f 形式</td>
+            <td>指定した形式でフッタに行番号を付与</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>オプションに指定する形式は以下のようなものがあります。</p>
+
+      <div class="option">
+        <table>
+          <tr>
+            <th>形式</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>a</td>
+            <td>すべての行</td>
+          </tr>
+          <tr>
+            <td>t</td>
+            <td>空白以外の行</td>
+          </tr>
+          <tr>
+            <td>n</td>
+            <td>行番号の付与中止</td>
+          </tr>
+          <tr>
+            <td>p パターン</td>
+            <td>正規表現にあう行のも行番号を付与</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">odコマンド</h3>
+      <p>バイナリファイルの内容を8進数や16進数、ASCII文字で出力します。デフォルトでは8進数です。</p>
+      <div class="format">od [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-t 出力タイプ</td>
+            <td>出力するフォーマットを指定する</td>
+          </tr>
+        </table>
+      </div>
+      <p>出力タイプは以下のように指定します。</p>
+      <div class="option">
+        <table>
+          <tr>
+            <th>出力タイプ</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>c</td>
+            <td>ASCII文字で出力します。</td>
+          </tr>
+          <tr>
+            <td>o</td>
+            <td>8進数で出力します。</td>
+          </tr>
+          <tr>
+            <td>x</td>
+            <td>16進数で出力します。</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">headコマンド</h3>
+      <p>ファイルの先頭部分を表示。デフォルトでは10行目まで表示します。</p>
+      <div class="format">head [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-n 行数</td>
+            <td>先頭から指定された行数だけ表示</td>
+          </tr>
+          <tr>
+            <td>-行数</td>
+            <td>先頭から指定された行数だけ表示(非推奨)</td>
+          </tr>
+          <tr>
+            <td>-c バイト数</td>
+            <td>出力するバイト数を指定する</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">tailコマンド</h3>
+      <p>ファイルの末尾部分を表示。デフォルトでは後ろから10行目まで表示します。</p>
+      <div class="format">head [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-n 行数</td>
+            <td>末尾から指定された行数だけ表示</td>
+          </tr>
+          <tr>
+            <td>-行数</td>
+            <td>末尾から指定された行数だけ表示(非推奨)</td>
+          </tr>
+          <tr>
+            <td>-c バイト数</td>
+            <td>末尾から出力するバイト数を指定する</td>
+          </tr>
+          <tr>
+            <td>-f</td>
+            <td>ファイルの末尾に追加された行だけを表示し続ける。(fg常駐、リアルタイムで更新)</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">cutコマンド</h3>
+      <p>ファイルの各行から指定したフィールドを出力</p>
+      <div class="format">cut [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-c 文字数</td>
+            <td>取りだす文字位置を指定する</td>
+          </tr>
+          <tr>
+            <td>-d 区切り文字</td>
+            <td>フィールドの区切り文字(デリミタという)を指定する</td>
+          </tr>
+          <tr>
+            <td>-f フィールド数</td>
+            <td>どのフィールドを知路出すか指定</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">pasteコマンド</h3>
+      <p>ファイル1とファイル2の各行を連結して出力</p>
+      <div class="format">paste [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-d 区切り文字</td>
+            <td>区切り文字を指定する。(デフォルトではタブ)</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">trコマンド</h3>
+      <p><strong>標準入力</strong>から読み込まれた文字列を変換したり、削除したりして標準出力に出力する。</p>
+      <div class="format">tr [オプション] 文字列1 [文字列2]</div>
+      <p>
+        なお文字列1と文字列2は同じ文字数でなければいけません。abcdeとghijkとした場合aはg、bはhというように1文字づつで対応しているからです。文字列1&gt;文字列2なら多い分はすべて文字列2の最後の文字、文字列2&lt;文字列1の場合は多い分は意味がなくなります。
+      </p>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-d</td>
+            <td>文字列1でマッチした文字列を削除する</td>
+          </tr>
+          <tr>
+            <td>-s</td>
+            <td>連続する文字列1を一つにする(aaabbbのファイルを-s abならabになる。)</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        また文字列パターンにはクラスが使えます。文字列1にパターン、文字列2に何か文字指定か文字列1と2にlowerとupperの組み合わせ以外はエラーになりそうです(やってみたかんじなので正確ではありません、まあ文字列2にパターンの用途は大文字小文字変換以外にないと思いますが)
+      </p>
+      <div class="kind">
+        <table>
+          <tr>
+            <th>クラス</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>[:alpha:]</td>
+            <td>英字</td>
+          </tr>
+          <tr>
+            <td>[:lower:]</td>
+            <td>英小文字</td>
+          </tr>
+          <tr>
+            <td>[:upper:]</td>
+            <td>英大文字</td>
+          </tr>
+          <tr>
+            <td>[:digit:]</td>
+            <td>数字</td>
+          </tr>
+          <tr>
+            <td>[:alnum:]</td>
+            <td>英数字</td>
+          </tr>
+          <tr>
+            <td>[:space:]</td>
+            <td>スペース</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">sortコマンド</h3>
+      <p>行単位でファイル内容をソートして標準出力に出力。デフォルトでは昇順</p>
+      <div class="format">sort [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-b</td>
+            <td>先頭の空白は無視</td>
+          </tr>
+          <tr>
+            <td>-f</td>
+            <td>大文字小文字の区別を無視する</td>
+          </tr>
+          <tr>
+            <td>-r</td>
+            <td>降順にソートする</td>
+          </tr>
+          <tr>
+            <td>-n</td>
+            <td>数字を文字ではなく数値として処理する</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">splitコマンド</h3>
+      <p>指定されたサイズでファイルを分割して新しいファイルとしてカレントディレクトリに出力。デフォルトでは100行で分割、フォルダ名の末尾にはaa、ab、acのように名前が付与されていく</p>
+      <div class="format">split [オプション] [分割するファイル] [出力後のファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-行数</td>
+            <td>指定された行数でファイルを分割</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">uniqコマンド</h3>
+      <p>重複している行を調べて1行にまとめて出力する。入力するテキストストリームはソートして置く必要があるので多くの場合はsortコマンドとパイプでつなぎます。</p>
+      <div class="format">split [オプション] [分割するファイル] [出力後のファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-d</td>
+            <td>重複した行のみを出力</td>
+          </tr>
+          <tr>
+            <td>-u</td>
+            <td>重複していない行のみを出力</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">wcコマンド</h3>
+      <p>ファイルの行数、単語数、文字数を表示する。デフォルトでは行数、単語数、文字数の順番で表示</p>
+      <div class="format">wc [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-c</td>
+            <td>文字数(バイト数)を表示</td>
+          </tr>
+          <tr>
+            <td>-l</td>
+            <td>行数を表示</td>
+          </tr>
+          <tr>
+            <td>-w</td>
+            <td>単語数を表示</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">xargsコマンド</h3>
+      <p>標準入力から受け取った文字列を引数にして、与えられたコマンドを実行する。</p>
+      <div class="format">wc コマンド</div>
+    </div>
+
+    <h2 class="main_theme">ファイルのチェックサム</h2>
+    <div>
+      <h3 class="subtitle">改ざんをチェックするコマンド</h3>
+      <div class="kind">
+        <table>
+          <tr>
+            <th>コマンド</th>
+            <th>種類</th>
+          </tr>
+          <tr>
+            <td>md5sumn</td>
+            <td>オプション無しだと標準出力にMD5によるハッシュ値を出力</td>
+          </tr>
+          <tr>
+            <td>sha1sumn</td>
+            <td>オプション無しだと標準出力にSHA1によるハッシュ値を出力</td>
+          </tr>
+          <tr>
+            <td>sha256sumn</td>
+            <td>オプション無しだと標準出力にSHA256によるハッシュ値を出力</td>
+          </tr>
+          <tr>
+            <td>sha512sumn</td>
+            <td>オプション無しだと標準出力にSHA512によるハッシュ値を出力</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>改ざんをチェックするには本体ファイルとチェックサムファイルを同じディレクトリに入れて-cオプションの後にチェックサムファイルを指定することで改ざんを確認できます。画像は<a href="https://mondai.ping-t.com/"></a>こちらから</a></p>
+      <img src="../check_sum.png" alt="">
+    </div>
+
+
+
+
+
+
+
 
 
 
@@ -284,4 +673,5 @@
 </body>
 
 <script src="../script.js"></script>
+
 </html>
