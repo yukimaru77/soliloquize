@@ -291,6 +291,18 @@
             <td>-n</td>
             <td>各行の左端に行番号を付与</td>
           </tr>
+          <tr>
+            <td>-c 文字数</td>
+            <td>抽出する文字位置を指定</td>
+          </tr>
+          <tr>
+            <td>-d 区切り文字</td>
+            <td>区切り文字を指定(デフォルトではタブ)</td>
+          </tr>
+          <tr>
+            <td>-f フィールド</td>
+            <td>抽出するフィールドを指定。カンマ,で複数指定可能</td>
+          </tr>
         </table>
       </div>
       <h3 class="subtitle">nlコマンド</h3>
@@ -558,6 +570,14 @@
             <td>-n</td>
             <td>数字を文字ではなく数値として処理する</td>
           </tr>
+          <tr>
+            <td>-t 区切り文字</td>
+            <td>指定した文字を区切り文字としてフィールド認識</td>
+          </tr>
+          <tr>
+            <td>-k フィールド</td>
+            <td>ソートする対象のフォーマットを指定(したいしないと一つ目)</td>
+          </tr>
         </table>
       </div>
 
@@ -579,7 +599,7 @@
 
       <h3 class="subtitle">uniqコマンド</h3>
       <p>重複している行を調べて1行にまとめて出力する。入力するテキストストリームはソートして置く必要があるので多くの場合はsortコマンドとパイプでつなぎます。</p>
-      <div class="format">split [オプション] [分割するファイル] [出力後のファイル名]</div>
+      <div class="format">split [オプション] [入力ファイル] [出力ファイル]</div>
       <div class="option">
         <table>
           <tr>
@@ -656,6 +676,139 @@
 
       <p>改ざんをチェックするには本体ファイルとチェックサムファイルを同じディレクトリに入れて-cオプションの後にチェックサムファイルを指定することで改ざんを確認できます。画像は<a href="https://mondai.ping-t.com/"></a>こちらから</a></p>
       <img src="../check_sum.png" alt="">
+    </div>
+
+    <h2 class="main_theme">ファイルの圧縮、解凍</h2>
+    <div>
+      <h3 class="subtitle">gzipコマンド/bzip2コマンド</h3>
+      <p>gzip/bzip2形式で圧縮する。元ファイルは消え、拡張子が.gz/.bz2となる。</p>
+      <div class="format">gzip/bzip2 [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-d</td>
+            <td>圧縮ではなく展開を行う</td>
+          </tr>
+          <tr>
+            <td>-c</td>
+            <td>元ファイルを残して標準出力に出力する</td>
+          </tr>
+          <tr>
+            <td>-r</td>
+            <td>ディレクトリ内のファイルすべてを圧縮</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">xzコマンド</h3>
+      <p>xz形式で圧縮する。元ファイルは消え、拡張子が.xzとなる。</p>
+      <div class="format">xz [オプション] [ファイル名]</div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-d</td>
+            <td>decompress。圧縮ではなく展開を行う</td>
+          </tr>
+          <tr>
+            <td>-k</td>
+            <td>keep。圧縮、解凍後に元ファイルを残す</td>
+          </tr>
+          <tr>
+            <td>-l</td>
+            <td>list。圧縮ファイル内のファイルを一覧表示する</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">解凍せずにファイルを閲覧</h3>
+      <p>zcat、bzcat、xzcatで圧縮ファイルの中身を出力する。</p>
+
+      <h3 class="subtitle">tarコマンド</h3>
+      <p>atke アーカイブの略でアーカイブを生成します。昔からあるコマンドなのでオプションが少し複雑です。オプションは順不同ですが区切りを入れたほうがわかりやすいです。</p>
+      <div class="format">tar -[動作オプション][圧縮オプション][その他オプション]f ファイル名 </div>
+      <p>まずは動作オプションの種類です。何をするのかを選びます。</p>
+      <div class="option">
+        <table>
+          <tr>
+            <th>動作オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-c</td>
+            <td>createの略でアーカイブの生成を行う</td>
+          </tr>
+          <tr>
+            <td>-x</td>
+            <td>extractの略で展開、つまりアーカイブからファイルを取り出す</td>
+          </tr>
+          <tr>
+            <td>-t</td>
+            <td>圧縮ファイル内のファイルを一覧表示する</td>
+          </tr>
+        </table>
+      </div>
+      <p>次に圧縮オプションの種類です。圧縮及び展開をするのかを選びます。</p>
+      <div class="option">
+        <table>
+          <tr>
+            <th>圧縮オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-z</td>
+            <td>gzipによる圧縮、解凍を行う</td>
+          </tr>
+          <tr>
+            <td>-j</td>
+            <td>bzip2による圧縮、解凍を行う</td>
+          </tr>
+          <tr>
+            <td>-J</td>
+            <td>xzによる圧縮、解凍を行う</td>
+          </tr>
+        </table>
+      </div>
+      <p>その他オプションです。</p>
+      <div class="option">
+        <table>
+          <tr>
+            <th>その他オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-v</td>
+            <td>詳細な情報を表示する</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3 class="subtitle">cpioコマンド</h3>
+      <p>cpioコマンドは標準入力や標準出力を使用します。ですので、入力ファイルや出力ファイルをコマンドの引数として指定することができません。そのため、findやlsコマンドなどでアーカイブにまとめるファイル(入力ファイル)の一覧を取り出し、パイプ(|)を使用してcpioコマンドの標準入力に渡します。また、作成するアーカイブ(出力ファイル)はリダイレクトの「>」を使用して指定します。</p>
+      <div class="format">cpio [オプション] </div>
+      <div class="option">
+        <table>
+          <tr>
+            <th>その他オプション</th>
+            <th>説明</th>
+          </tr>
+          <tr>
+            <td>-o</td>
+            <td>アーカイブを作成する</td>
+          </tr>
+          <tr>
+            <td>-i</td>
+            <td>アーカイブからファイルを抽出する</td>
+          </tr>
+        </table>
+      </div>
     </div>
 
 

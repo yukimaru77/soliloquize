@@ -13,7 +13,7 @@
     <h3 class="subtitle">SysVinitとsystemdの違い</h3>
     <p>SysVinitとsystemdの大きな違いは並列処理が出来るかにある。SysVinitはinitプロセスを最初に実行し、initプロセスはinittabファイルに記載されているプロセスを順番に実行していくシェルスクリプトである。それに対しsystemdでは初めにsystemdプロセスが起動し、default.targetを解析し依存関係を処理してシステムの起動を行う。システムの起動処理はUnitという処理単位で管理されています。例えばサービスを起動するUnitやファイルシステムをマウントとするUnitなどがあります。SysVinitの初期化スクリプトにまとめて含まれていた個々の処理を抜き出して、個別の
       「Unit」として定義ています。unitの概念は以下の画像がわかりやすいです。(<a href="https://www.slideshare.net/enakai/linux-27872553?from_action=save">こちら</a>がわかりやすいです。)</p>
-    <img src="/unit.png" alt="">
+    <img src="../unit.png" alt="">
     <h3 class="subtitle">unitの種類と定義ファイル</h3>
     <div class="kind">
     <table>
